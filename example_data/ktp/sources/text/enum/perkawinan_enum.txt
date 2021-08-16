@@ -1,0 +1,13 @@
+BELUM
+Belum
+CERAI
+Cerai
+HIDUP
+KAWIN
+Kawin
+MATI
+belum
+cerai
+hidup
+kawin
+mati

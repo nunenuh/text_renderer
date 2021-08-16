@@ -1,0 +1,11 @@
+arial.ttf
+ocr_a.ttf
+ocr_a_ext.ttf
+ocr_2_ssi.ttf
+epson_pixeled.ttf
+8pin_matrix_regular.ttf
+dotrice_regular.otf
+fake_receipt.ttf
+merchant_copy_dublesize_regular.ttf
+merchant_copy_wide_regular.ttf
+simsun.ttf

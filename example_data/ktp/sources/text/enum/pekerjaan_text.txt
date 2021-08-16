@@ -1,0 +1,314 @@
+BELUM/TIDAK BEKERJA
+Belum/Tidak Bekerja
+Belum/tidak bekerja
+belum/tidak bekerja
+MENGURUS RUMAH TANGGA
+Mengurus Rumah Tangga
+Mengurus rumah tangga
+mengurus rumah tangga
+PELAJAR/MAHASISWA
+Pelajar/Mahasiswa
+Pelajar/mahasiswa
+pelajar/mahasiswa
+PENSIUNAN
+Pensiunan
+pensiunan
+PEWAGAI NEGERI SIPIL
+Pewagai Negeri Sipil
+Pewagai negeri sipil
+pewagai negeri sipil
+TENTARA NASIONAL INDONESIA
+Tentara Nasional Indonesia
+Tentara nasional indonesia
+tentara nasional indonesia
+KEPOLISISAN RI
+Kepolisisan RI
+Kepolisisan ri
+kepolisisan ri
+PERDAGANGAN
+Perdagangan
+perdagangan
+PETANI/PEKEBUN
+Petani/Pekebun
+Petani/pekebun
+petani/pekebun
+PETERNAK
+Peternak
+peternak
+NELAYAN/PERIKANAN
+Nelayan/Perikanan
+Nelayan/perikanan
+nelayan/perikanan
+INDUSTRI
+Industri
+industri
+KONSTRUKSI
+Konstruksi
+konstruksi
+TRANSPORTASI
+Transportasi
+transportasi
+KARYAWAN SWASTA
+Karyawan Swasta
+Karyawan swasta
+karyawan swasta
+KARYAWAN BUMN
+Karyawan BUMN
+Karyawan bumn
+karyawan bumn
+KARYAWAN BUMD
+Karyawan BUMD
+Karyawan bumd
+karyawan bumd
+KARYAWAN HONORER
+Karyawan Honorer
+Karyawan honorer
+karyawan honorer
+BURUH HARIAN LEPAS
+Buruh Harian Lepas
+Buruh harian lepas
+buruh harian lepas
+BURUH TANI/PERKEBUNAN
+Buruh Tani/Perkebunan
+Buruh tani/perkebunan
+buruh tani/perkebunan
+BURUH NELAYAN/PERIKANAN
+Buruh Nelayan/Perikanan
+Buruh nelayan/perikanan
+buruh nelayan/perikanan
+BURUH PETERNAKAN
+Buruh Peternakan
+Buruh peternakan
+buruh peternakan
+PEMBANTU RUMAH TANGGA
+Pembantu Rumah Tangga
+Pembantu rumah tangga
+pembantu rumah tangga
+TUKANG CUKUR
+Tukang Cukur
+Tukang cukur
+tukang cukur
+TUKANG LISTRIK
+Tukang Listrik
+Tukang listrik
+tukang listrik
+TUKANG BATU
+Tukang Batu
+Tukang batu
+tukang batu
+TUKANG KAYU
+Tukang Kayu
+Tukang kayu
+tukang kayu
+TUKANG SOL SEPATU
+Tukang Sol Sepatu
+Tukang sol sepatu
+tukang sol sepatu
+TUKANG LAS/PANDAI BESI
+Tukang Las/Pandai Besi
+Tukang las/pandai besi
+tukang las/pandai besi
+TUKANG JAHIT
+Tukang Jahit
+Tukang jahit
+tukang jahit
+TUKANG GIGI
+Tukang Gigi
+Tukang gigi
+tukang gigi
+PENATA RIAS
+Penata Rias
+Penata rias
+penata rias
+PENATA BUSANA
+Penata Busana
+Penata busana
+penata busana
+PENATA RAMBUT
+Penata Rambut
+Penata rambut
+penata rambut
+MEKANIK
+Mekanik
+mekanik
+SENIMAN
+Seniman
+seniman
+TABIB
+Tabib
+tabib
+PARAJI
+Paraji
+paraji
+PERANCANG BUSANA
+Perancang Busana
+Perancang busana
+perancang busana
+PENTERJEMAH
+Penterjemah
+penterjemah
+IMAM MASJID
+Imam Masjid
+Imam masjid
+imam masjid
+PENDETA
+Pendeta
+pendeta
+PASTOR
+Pastor
+pastor
+WARTAWAN
+Wartawan
+wartawan
+USTADZ/MUBALIGH
+Ustadz/Mubaligh
+Ustadz/mubaligh
+ustadz/mubaligh
+JURU MASAK
+Juru Masak
+Juru masak
+juru masak
+PROMOTOR ACARA
+Promotor Acara
+Promotor acara
+promotor acara
+ANGGOTA DPR-RI
+Anggota DPR-RI
+Anggota dpr-ri
+anggota dpr-ri
+ANGGOTA DPD
+Anggota DPD
+Anggota dpd
+anggota dpd
+ANGGOTA BPK
+Anggota BPK
+Anggota bpk
+anggota bpk
+PRESIDEN
+Presiden
+presiden
+WAKIL PRESIDEN
+Wakil Presiden
+Wakil presiden
+wakil presiden
+ANGGOTA MAHKAMAH KONSTITUSI
+Anggota Mahkamah Konstitusi
+Anggota mahkamah konstitusi
+anggota mahkamah konstitusi
+ANGGOTA KABINET/KEMENTERIAN
+Anggota Kabinet/Kementerian
+Anggota kabinet/kementerian
+anggota kabinet/kementerian
+DUTA BESAR
+Duta Besar
+Duta besar
+duta besar
+GUBERNUR
+Gubernur
+gubernur
+WAKIL GUBERNUR
+Wakil Gubernur
+Wakil gubernur
+wakil gubernur
+BUPATI
+Bupati
+bupati
+WAKIL BUPATI
+Wakil Bupati
+Wakil bupati
+wakil bupati
+WALIKOTA
+Walikota
+walikota
+WAKIL WALIKOTA
+Wakil Walikota
+Wakil walikota
+wakil walikota
+ANGGOTA DPRD PROVINSI
+Anggota DPRD Provinsi
+Anggota dprd provinsi
+anggota dprd provinsi
+ANGGOTA DPRD KABUPATEN/KOTA
+Anggota DPRD Kabupaten/Kota
+Anggota dprd kabupaten/kota
+anggota dprd kabupaten/kota
+DOSEN
+Dosen
+dosen
+GURU
+Guru
+guru
+PILOT
+Pilot
+pilot
+PENGACARA
+Pengacara
+pengacara
+NOTARIS
+Notaris
+notaris
+ARSITEK
+Arsitek
+arsitek
+AKUNTAN
+Akuntan
+akuntan
+KONSULTAN
+Konsultan
+konsultan
+DOKTER
+Dokter
+dokter
+BIDAN
+Bidan
+bidan
+PERAWAT
+Perawat
+perawat
+APOTEKER
+Apoteker
+apoteker
+PSIKIATER/PSIKOLOG
+Psikiater/Psikolog
+Psikiater/psikolog
+psikiater/psikolog
+PENYIAR TELEVISI
+Penyiar Televisi
+Penyiar televisi
+penyiar televisi
+PENYIAR RADIO
+Penyiar Radio
+Penyiar radio
+penyiar radio
+PELAUT
+Pelaut
+pelaut
+PENELITI
+Peneliti
+peneliti
+SOPIR
+Sopir
+sopir
+PIALANG
+Pialang
+pialang
+PARANORMAL
+Paranormal
+paranormal
+PEDAGANG
+Pedagang
+pedagang
+PERANGKAT DESA
+Perangkat Desa
+Perangkat desa
+perangkat desa
+KEPALA DESA
+Kepala Desa
+Kepala desa
+kepala desa
+BIARAWATI
+Biarawati
+biarawati
+WIRASWASTA
+Wiraswasta
+wiraswasta
