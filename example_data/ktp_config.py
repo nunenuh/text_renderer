@@ -15,7 +15,8 @@ from text_renderer.layout.extra_text_line import ExtraTextLineLayout
 
 
 CURRENT_DIR = Path(os.path.abspath(os.path.dirname(__file__)))
-OUT_DIR = CURRENT_DIR / "ktp" / "results"
+OUT_DIR = Path('/data/extended/text_dataset/text_renderer/ktp/')
+OUT_DIR = OUT_DIR / "results"
 DATA_DIR = CURRENT_DIR / "ktp" / "sources"
 BG_DIR = DATA_DIR / "bg"
 CHAR_DIR = DATA_DIR / "char"
@@ -36,7 +37,7 @@ perspective_transform = NormPerspectiveTransformCfg(20, 20, 1.5)
 def get_char_corpus():
     return CharCorpus(
         CharCorpusCfg(
-            text_paths=[TEXT_DIR / "long_text" / "500k.txt"],
+            text_paths=[TEXT_DIR / "long_text" / "100k.txt"],
             filter_by_chars=True,
             chars_file=CHAR_DIR / "eng.txt",
             length=(5, 25),
@@ -111,7 +112,7 @@ def eng_word_data():
         inspect.currentframe().f_code.co_name,
         corpus=WordCorpus(
             WordCorpusCfg(
-                text_paths=[TEXT_DIR / "long_text" / "500k.txt"],
+                text_paths=[TEXT_DIR / "long_text" / "100k.txt"],
                 filter_by_chars=True,
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
@@ -149,7 +150,7 @@ def same_line_data():
             CharCorpus(
                 CharCorpusCfg(
                     text_paths=[
-                        TEXT_DIR / "long_text" / "500k.txt"
+                        TEXT_DIR / "long_text" / "100k.txt"
                     ],
                     filter_by_chars=True,
                     chars_file=CHAR_DIR / "eng.txt",
@@ -174,7 +175,7 @@ def extra_text_line_data():
                 CharCorpusCfg(
                     text_paths=[
                         # TEXT_DIR / "chn_text.txt",
-                        TEXT_DIR / "long_text" / "500k.txt"
+                        TEXT_DIR / "long_text" / "100k.txt"
                     ],
                     filter_by_chars=True,
                     chars_file=CHAR_DIR / "eng.txt",
@@ -188,7 +189,7 @@ def extra_text_line_data():
                 CharCorpusCfg(
                     text_paths=[
                         # TEXT_DIR / "chn_text.txt",
-                        TEXT_DIR / "long_text" / "500k.txt"
+                        TEXT_DIR / "long_text" / "100k.txt"
                     ],
                     filter_by_chars=True,
                     chars_file=CHAR_DIR / "eng.txt",
