@@ -8,7 +8,7 @@ from text_renderer.utils.errors import PanicError
 from text_renderer.utils.utils import random_choice
 
 from .corpus import Corpus, CorpusCfg
-
+import random
 
 @dataclass
 class EnumCorpusCfg(CorpusCfg):
@@ -37,6 +37,7 @@ class EnumCorpusCfg(CorpusCfg):
     filter_font: bool = False
     filter_font_min_support_chars: int = 100
     join_str: str = ""
+    random_letter_case = False
 
 
 class EnumCorpus(Corpus):
@@ -75,4 +76,10 @@ class EnumCorpus(Corpus):
 
     def get_text(self):
         text = random_choice(self.texts, self.cfg.num_pick)
-        return self.cfg.join_str.join(text)
+        text = self.cfg.join_str.join(text)
+        if self.cfg.random_letter_case:
+            text_set = sorted(list(set([text.lower(), text.upper(), text.capitalize(), text])))
+            random.shuffle(text_set)
+            text = random.choice(text_set)
+        return text
+
