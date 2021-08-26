@@ -30,6 +30,7 @@ CHAR_DIR = SRC_DIR / "char"
 FONT_DIR = SRC_DIR / "font" 
 TEXT_DIR = SRC_DIR / "text"
 TEXT_FILES = sorted(list(Path(TEXT_DIR).glob("*.txt")))
+print(TEXT_FILES)
 
 print(SRC_DIR)
 
@@ -278,7 +279,8 @@ def rand_data():
 # fmt: off
 # The configuration file must have a configs variable
 configs = [
-    enum_data(),
+    standard_icol_tcol_pad(),
+    standard_icol_tcol_nopad(),
 #    rand_data(),
 #    eng_word_data(),
 #    same_line_data(),
