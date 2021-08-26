@@ -78,8 +78,12 @@ class EnumCorpus(Corpus):
         text = random_choice(self.texts, self.cfg.num_pick)
         text = self.cfg.join_str.join(text)
         if self.cfg.random_letter_case:
-            text_set = sorted(list(set([text.lower(), text.upper(), text.capitalize(), text])))
-            random.shuffle(text_set)
-            text = random.choice(text_set)
+            text_set = sorted(list(set([text.lower(), text.upper(), text.capitalize()])))
+            text_weight = [0.2, 0.2, 0.2]
+            
+            text_set.append(text)
+            text_weight.append(0.6)
+            
+            text = random.choices(text_set, weights=text_weight, k=1)[0]
         return text
 
