@@ -15,7 +15,7 @@ from text_renderer.layout.extra_text_line import ExtraTextLineLayout
 
 
 CURRENT_DIR = Path(os.path.abspath(os.path.dirname(__file__)))
-OUT_DIR = Path('/data/extended/text_dataset/text_renderer/ktp/')
+OUT_DIR = Path('/data/extended/text_dataset/text_renderer/testing/')
 OUT_DIR = OUT_DIR / "results"
 DATA_DIR = CURRENT_DIR / "ktp" / "sources"
 BG_DIR = DATA_DIR / "bg"
@@ -50,7 +50,7 @@ def base_cfg(
     name: str, corpus, corpus_effects=None, layout_effects=None, layout=None, gray=True
 ):
     return GeneratorCfg(
-        num_image=50000,
+        num_image=100,
         save_dir=OUT_DIR / name,
         render_cfg=RenderCfg(
             bg_dir=BG_DIR,
@@ -75,26 +75,39 @@ def base_cfg(
 def enum_data():
     return base_cfg(
         inspect.currentframe().f_code.co_name,
+        layout=SameLineLayout(),
+        gray=False,
         corpus=EnumCorpus(
             EnumCorpusCfg(
                 text_paths=[
                     TEXT_DIR / "enum" / "wilayah_enum.txt", 
-                    TEXT_DIR / "enum" / "wilayah_text.txt", 
+#                    TEXT_DIR / "enum" / "wilayah_text.txt", 
                     TEXT_DIR / "enum" / "nama_enum.txt", 
-                    TEXT_DIR / "enum" / "nama_text.txt", 
+#                    TEXT_DIR / "enum" / "nama_text.txt", 
                     TEXT_DIR / "enum" / "alamat_enum.txt", 
-                    TEXT_DIR / "enum" / "alamat_text.txt", 
+#                    TEXT_DIR / "enum" / "alamat_text.txt", 
                     TEXT_DIR / "enum" / "pekerjaan_enum.txt", 
-                    TEXT_DIR / "enum" / "pekerjaan_text.txt", 
+#                    TEXT_DIR / "enum" / "pekerjaan_text.txt", 
                     TEXT_DIR / "enum" / "perkawinan_enum.txt", 
-                    TEXT_DIR / "enum" / "perkawinan_text.txt", 
-                    TEXT_DIR / "enum" / "agama_text.txt", 
+#                    TEXT_DIR / "enum" / "perkawinan_text.txt", 
+#                    TEXT_DIR / "enum" / "agama_text.txt", 
+		     TEXT_DIR / "enum" / "nik_enum_10000r.txt", 
+		    
                 ],
                 filter_by_chars=True,
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
         ),
+        corpus_effects=Effects([
+        	Padding(),
+        	Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True),
+               ImgAugEffect(aug=iaa.Emboss(alpha=(0.9, 1.0), strength=(1.5, 1.6))),
+               Line(p=1, thickness=(3, 4)),
+        ]),
+        layout_effects=Effects(Line(p=1)),
+        
+
     )
 
 
@@ -222,11 +235,11 @@ def imgaug_emboss_example():
 # The configuration file must have a configs variable
 configs = [
     enum_data(),
-    rand_data(),
-    eng_word_data(),
-    same_line_data(),
-    extra_text_line_data(),
-    imgaug_emboss_example()
+#    rand_data(),
+#    eng_word_data(),
+#    same_line_data(),
+#    extra_text_line_data(),
+#    imgaug_emboss_example()
 ]
 # fmt: on
 
