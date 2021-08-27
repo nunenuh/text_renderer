@@ -26,7 +26,7 @@ SRC_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/sources')
 OUT_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/results')
 # OUT_DIR = OUT_DIR / "results"
 
-BG_DIR = SRC_DIR / "bg" / "general"
+BG_DIR = SRC_DIR / "bg" / "document"
 CHAR_DIR = SRC_DIR / "char"
 CHAR_FILE = CHAR_DIR / "eng.txt"
 
@@ -226,9 +226,10 @@ def extra_text():
                 )
             ),
         ],
-        corpus_effects=Effects([
-            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
-        ]),
+        corpus_effects=[
+            Effects([RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),]),  
+            NoEffects()
+        ],
         layout_effects=Effects(Line(p=1)),
     )
     
