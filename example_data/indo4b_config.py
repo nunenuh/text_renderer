@@ -203,7 +203,7 @@ def random_char_spacing_ictc():
 def extra_text_line_ictc():
     cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
-        layout=ExtraTextLineLayout(),
+        layout=ExtraTextLineLayout(bottom_prob=1.0),
         gray=False,
         corpus=EnumCorpus(
             EnumCorpusCfg(
