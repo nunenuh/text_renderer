@@ -1,6 +1,7 @@
 import inspect
 import os
 from pathlib import Path
+from text_renderer.effect.padding import RandomCenterPadding
 import imgaug.augmenters as iaa
 
 from text_renderer.effect import *
@@ -18,6 +19,7 @@ from text_renderer.effect.curve import Curve
 from text_renderer.layout import SameLineLayout, ExtraTextLineLayout
 from text_renderer.layout.extra_text_line import ExtraTextLineLayout
 
+import random
 
 CURRENT_DIR = Path(os.path.abspath(os.path.dirname(__file__)))
 SRC_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/sources')
@@ -26,6 +28,8 @@ OUT_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/results')
 
 BG_DIR = SRC_DIR / "bg"
 CHAR_DIR = SRC_DIR / "char"
+CHAR_FILE = CHAR_DIR / "eng.txt"
+
 FONT_DIR = SRC_DIR / "font" 
 TEXT_DIR = SRC_DIR / "text"
 TEXT_FILES = sorted(list(Path(TEXT_DIR).glob("*.txt")))
@@ -39,36 +43,8 @@ font_cfg = dict(
     font_size=(21, 34),
 )
 
-norm_perspective_transform = NormPerspectiveTransformCfg(20, 20, 1.5)
-fixed_perspective_transform = FixedPerspectiveTransformCfg(30, 30, 1.5)
-
-padding_center_fx = Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True)
-padding_fx = Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71])
-
-curve_fx = Curve(p=1, period=180, amplitude=(4, 5)),
-dropout_rand_fx = DropoutRand(p=1, dropout_p=(0.3, 0.5))
-dropout_hor_fx = DropoutHorizontal(p=1, num_line=2, thickness=3)
-dropout_ver_fx = DropoutVertical(p=1, num_line=15)
-line_fx = Line(p=1, thickness=(3, 4))
-
-
-extra_line_lay = ExtraTextLineLayout(bottom_prob=1.0)
-same_line_lay = SameLineLayout(h_spacing=(0.9, 0.91))
-
 
 NUM_IMAGE = 100
-
-# def get_char_corpus():
-#     return CharCorpus(
-#         CharCorpusCfg(
-#             text_paths=[TEXT_DIR / "long_text" / "100k.txt"],
-#             filter_by_chars=True,
-#             chars_file=CHAR_DIR / "eng.txt",
-#             length=(5, 25),
-#             char_spacing=(-0.3, 1.3),
-#             **font_cfg
-#         ),
-#     )
 
 def base_cfg(
     name: str, corpus, corpus_effects=None, layout_effects=None, layout=None, gray=True
@@ -78,7 +54,7 @@ def base_cfg(
         save_dir=OUT_DIR / name,
         render_cfg=RenderCfg(
             bg_dir=BG_DIR,
-            perspective_transform=norm_perspective_transform,
+            perspective_transform=NormPerspectiveTransformCfg(20, 20, 1.5),
             gray=gray,
             layout_effects=layout_effects,
             layout=layout,
@@ -88,7 +64,7 @@ def base_cfg(
     )
 
 
-def standard_icol_tcol_nopad():
+def standard():
     cfg = base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=SameLineLayout(),
@@ -98,19 +74,19 @@ def standard_icol_tcol_nopad():
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
                 text_color_cfg=SimpleTextColorCfg(),
-                chars_file=CHAR_DIR / "eng.txt",
+                chars_file=CHAR_FILE,
                 **font_cfg
             ),
         ),
-        corpus_effects=Effects([]),
-        layout_effects=Effects(Line(p=1)),
+        corpus_effects=Effects([
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71],)
+        ]),
     )
     
     return cfg
 
-
-def standard_icol_tcol_pad():
-    cfg = base_cfg(
+def compact_spacing():
+    cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=SameLineLayout(),
         gray=False,
@@ -124,15 +100,37 @@ def standard_icol_tcol_pad():
             ),
         ),
         corpus_effects=Effects([
-            Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71])
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
         ]),
-        layout_effects=Effects(Line(p=1)),
     )
+    cfg.render_cfg.corpus.cfg.char_spacing = -0.3
     
     return cfg
 
+def large_spacing():
+    cfg =  base_cfg(
+        inspect.currentframe().f_code.co_name,
+        layout=SameLineLayout(),
+        gray=False,
+        corpus=EnumCorpus(
+            EnumCorpusCfg(
+                text_paths=TEXT_FILES,
+                filter_by_chars=True,
+                text_color_cfg=SimpleTextColorCfg(),
+                chars_file=CHAR_DIR / "eng.txt",
+                **font_cfg
+            ),
+        ),
+        corpus_effects=Effects([
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
+        ]),
+    )
+    cfg.render_cfg.corpus.cfg.char_spacing = 0.5
     
-def random_dropout_icol_tcol_cpad():
+    return cfg
+
+
+def curve():
     cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=SameLineLayout(),
@@ -148,16 +146,13 @@ def random_dropout_icol_tcol_cpad():
         ),
         corpus_effects=Effects([
             Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True),
-            DropoutRand(p=0.5, dropout_p=(0.3, 0.5)),
-            DropoutHorizontal(p=0.5, num_line=2, thickness=3),
-            DropoutVertical(p=0.5, num_line=15)
+            Curve(p=1, period=180, amplitude=(4, 5)),
         ]),
     )
     
     return cfg
-
-
-def random_line_icol_tcol_cpad():
+    
+def random_dropout():
     cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=SameLineLayout(),
@@ -172,7 +167,33 @@ def random_line_icol_tcol_cpad():
             ),
         ),
         corpus_effects=Effects([
-            Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True),
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
+            random.choice([
+                DropoutRand(p=0.5, dropout_p=(0.3, 0.5)),
+                DropoutHorizontal(p=0.5, num_line=2, thickness=3),
+                DropoutVertical(p=0.5, num_line=15)
+            ])
+        ]),
+    )
+    
+    return cfg
+
+def random_line():
+    cfg =  base_cfg(
+        inspect.currentframe().f_code.co_name,
+        layout=SameLineLayout(),
+        gray=False,
+        corpus=EnumCorpus(
+            EnumCorpusCfg(
+                text_paths=TEXT_FILES,
+                filter_by_chars=True,
+                text_color_cfg=SimpleTextColorCfg(),
+                chars_file=CHAR_DIR / "eng.txt",
+                **font_cfg
+            ),
+        ),
+        corpus_effects=Effects([
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
             Line(p=1, thickness=(3, 4))
         ]),
     )
@@ -180,27 +201,7 @@ def random_line_icol_tcol_cpad():
     return cfg
 
 
-def random_char_spacing_ictc():
-    cfg =  base_cfg(
-        inspect.currentframe().f_code.co_name,
-        layout=SameLineLayout(),
-        gray=False,
-        corpus=EnumCorpus(
-            EnumCorpusCfg(
-                text_paths=TEXT_FILES,
-                filter_by_chars=True,
-                text_color_cfg=SimpleTextColorCfg(),
-                chars_file=CHAR_DIR / "eng.txt",
-                **font_cfg
-            ),
-        ),
-        corpus_effects=Effects([]),
-    )
-    cfg.render_cfg.corpus.cfg.char_spacing = (-0.3,0.5)
-    
-    return cfg
-
-def extra_text_line_ictc():
+def extra_text():
     cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=ExtraTextLineLayout(bottom_prob=1.0),
@@ -213,14 +214,23 @@ def extra_text_line_ictc():
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
+            EnumCorpusCfg(
+                text_paths=TEXT_FILES,
+                filter_by_chars=True,
+                text_color_cfg=SimpleTextColorCfg(),
+                chars_file=CHAR_DIR / "eng.txt",
+                **font_cfg
+            ),
         ),
-        corpus_effects=Effects([]),
+        corpus_effects=Effects([
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
+        ]),
+        layout_effects=Effects(Line(p=1)),
     )
     
     return cfg
 
-
-def curve_ictc():
+def perspective_transform():
     cfg =  base_cfg(
         inspect.currentframe().f_code.co_name,
         layout=SameLineLayout(),
@@ -235,40 +245,16 @@ def curve_ictc():
             ),
         ),
         corpus_effects=Effects([
-            Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True),
-            Curve(p=1, period=180, amplitude=(4, 5)),    
+            RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
         ]),
     )
     
-    return cfg
-
-
-def perspective_transform_ictc():
-    cfg =  base_cfg(
-        inspect.currentframe().f_code.co_name,
-        layout=SameLineLayout(),
-        gray=False,
-        corpus=EnumCorpus(
-            EnumCorpusCfg(
-                text_paths=TEXT_FILES,
-                filter_by_chars=True,
-                text_color_cfg=SimpleTextColorCfg(),
-                chars_file=CHAR_DIR / "eng.txt",
-                **font_cfg
-            ),
-        ),
-        corpus_effects=Effects([]),
-    )
-    
-    cfg.render_cfg.perspective_transform = UniformPerspectiveTransformCfg()
+    cfg.render_cfg.perspective_transform = UniformPerspectiveTransformCfg(30, 30, 1.5)
     
     return cfg
 
 
-
-
-
-def rand_data():
+def random_character():
     cfg = base_cfg(
         inspect.currentframe().f_code.co_name,
         corpus=RandCorpus(
@@ -281,19 +267,14 @@ def rand_data():
 # fmt: off
 # The configuration file must have a configs variable
 configs = [
-    standard_icol_tcol_pad(),
-    standard_icol_tcol_nopad(),
-    random_dropout_icol_tcol_cpad(),
-    random_line_icol_tcol_cpad(),
-    random_char_spacing_ictc(),
-    extra_text_line_ictc(),
-    curve_ictc(),
-    perspective_transform_ictc(),
-    rand_data(),
-    
-#    eng_word_data(),
-#    same_line_data(),
-#    extra_text_line_data(),
-#    imgaug_emboss_example()
+    standard(),
+    compact_spacing(),
+    large_spacing(),
+    curve(),
+    random_dropout(),
+    random_line(),
+    extra_text(),
+    perspective_transform(),
+    random_character(),
 ]
 # fmt: on

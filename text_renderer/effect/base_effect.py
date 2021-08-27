@@ -121,3 +121,37 @@ class Effects:
         for e in self.effects:
             img, bbox = e(img, bbox)
         return img, bbox
+    
+
+class RandomEffects:
+    """
+    Apply multiple effects
+    """
+
+    def __init__(self, effects: Union[Effect, List[Effect], Selector, List[Selector]], k=1):
+        """
+
+        Parameters
+        ----------
+        effects : Effect or List[Effect]
+        """
+        if not isinstance(effects, list):
+            effects = [effects]
+        self.effects = effects
+        self.k = k
+
+    def apply_effects(self, img: PILImage, bbox: BBox) -> Tuple[PILImage, BBox]:
+        """
+
+        Args:
+            img:
+            bbox: bbox of text on input Image
+
+        Returns:
+
+        """
+        
+        self.effects = random.choices(self.effects, k=self.k)
+        for e in self.effects:
+            img, bbox = e(img, bbox)
+        return img, bbox

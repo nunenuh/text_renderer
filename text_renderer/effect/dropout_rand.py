@@ -45,3 +45,4 @@ class DropoutRand(Effect):
             self.rand_pick(pim, col, row)
 
         return img, text_bbox
+    
