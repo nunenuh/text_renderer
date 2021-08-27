@@ -9,9 +9,9 @@ from text_renderer.config import (
     RenderCfg,
     NormPerspectiveTransformCfg,
     GeneratorCfg,
-    SimpleTextColorCfg,
-    TextColorCfg,
     FixedTextColorCfg,
+    TextColorCfg,
+    SimpleTextColorCfg,
     FixedPerspectiveTransformCfg,
 )
 from text_renderer.layout.same_line import SameLineLayout
@@ -98,7 +98,7 @@ def standard_icol_tcol_nopad():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -119,7 +119,7 @@ def standard_icol_tcol_pad():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -142,7 +142,7 @@ def random_dropout_icol_tcol_cpad():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -167,7 +167,7 @@ def random_line_icol_tcol_cpad():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -190,7 +190,7 @@ def random_char_spacing_ictc():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -210,7 +210,7 @@ def extra_text_line_ictc():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -230,7 +230,7 @@ def curve_ictc():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
@@ -253,7 +253,7 @@ def perspective_transform_ictc():
             EnumCorpusCfg(
                 text_paths=TEXT_FILES,
                 filter_by_chars=True,
-                text_color_cfg=FixedTextColorCfg(),
+                text_color_cfg=SimpleTextColorCfg(),
                 chars_file=CHAR_DIR / "eng.txt",
                 **font_cfg
             ),
