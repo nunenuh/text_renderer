@@ -206,22 +206,26 @@ def extra_text():
         inspect.currentframe().f_code.co_name,
         layout=ExtraTextLineLayout(bottom_prob=1.0),
         gray=False,
-        corpus=EnumCorpus(
-            EnumCorpusCfg(
-                text_paths=TEXT_FILES,
-                filter_by_chars=True,
-                text_color_cfg=SimpleTextColorCfg(),
-                chars_file=CHAR_DIR / "eng.txt",
-                **font_cfg
+        corpus=[
+            EnumCorpus(
+                EnumCorpusCfg(
+                    text_paths=TEXT_FILES,
+                    filter_by_chars=True,
+                    text_color_cfg=SimpleTextColorCfg(),
+                    chars_file=CHAR_DIR / "eng.txt",
+                    **font_cfg
+                )
             ),
-            EnumCorpusCfg(
-                text_paths=TEXT_FILES,
-                filter_by_chars=True,
-                text_color_cfg=SimpleTextColorCfg(),
-                chars_file=CHAR_DIR / "eng.txt",
-                **font_cfg
+            EnumCorpus(
+                EnumCorpusCfg(
+                    text_paths=TEXT_FILES,
+                    filter_by_chars=True,
+                    text_color_cfg=SimpleTextColorCfg(),
+                    chars_file=CHAR_DIR / "eng.txt",
+                    **font_cfg
+                )
             ),
-        ),
+        ],
         corpus_effects=Effects([
             RandomCenterPadding(p=0.5, center_prob=0.5, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71]),
         ]),
