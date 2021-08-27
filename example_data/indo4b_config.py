@@ -21,7 +21,7 @@ from text_renderer.layout.extra_text_line import ExtraTextLineLayout
 
 
 CURRENT_DIR = Path(os.path.abspath(os.path.dirname(__file__)))
-SRC_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/source')
+SRC_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/sources')
 OUT_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/results')
 # OUT_DIR = OUT_DIR / "results"
 
@@ -281,7 +281,14 @@ def rand_data():
 configs = [
     standard_icol_tcol_pad(),
     standard_icol_tcol_nopad(),
-#    rand_data(),
+    random_dropout_icol_tcol_cpad(),
+    random_line_icol_tcol_cpad(),
+    random_char_spacing_ictc(),
+    extra_text_line_ictc(),
+    curve_ictc(),
+    perspective_transform_ictc(),
+    rand_data(),
+    
 #    eng_word_data(),
 #    same_line_data(),
 #    extra_text_line_data(),
