@@ -8,11 +8,10 @@ from text_renderer.corpus import *
 from text_renderer.config import (
     RenderCfg,
     NormPerspectiveTransformCfg,
-    GeneratorCfg,
-    FixedTextColorCfg,
-    TextColorCfg,
-    SimpleTextColorCfg,
     FixedPerspectiveTransformCfg,
+    UniformPerspectiveTransformCfg,
+    GeneratorCfg,
+    SimpleTextColorCfg,
 )
 from text_renderer.layout.same_line import SameLineLayout
 from text_renderer.effect.curve import Curve
@@ -261,7 +260,7 @@ def perspective_transform_ictc():
         corpus_effects=Effects([]),
     )
     
-    cfg.render_cfg.perspective_transform = fixed_perspective_transform
+    cfg.render_cfg.perspective_transform = UniformPerspectiveTransformCfg()
     
     return cfg
 
