@@ -4,6 +4,7 @@ from typing import List, Tuple
 
 import numpy as np
 from PIL import Image
+Image.MAX_IMAGE_PIXELS = None
 from PIL.Image import Image as PILImage
 from text_renderer.utils.utils import random_choice
 
