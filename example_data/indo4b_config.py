@@ -26,7 +26,7 @@ SRC_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/sources')
 OUT_DIR = Path('/data/extended/text_dataset/text_renderer/indo4b/results')
 # OUT_DIR = OUT_DIR / "results"
 
-BG_DIR = SRC_DIR / "bg"
+BG_DIR = SRC_DIR / "bg" / "general"
 CHAR_DIR = SRC_DIR / "char"
 CHAR_FILE = CHAR_DIR / "eng.txt"
 
