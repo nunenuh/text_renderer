@@ -235,7 +235,10 @@ def curve_ictc():
                 **font_cfg
             ),
         ),
-        corpus_effects=Effects([padding_center_fx, curve_fx]),
+        corpus_effects=Effects([
+            Padding(p=1, w_ratio=[0.2, 0.21], h_ratio=[0.7, 0.71], center=True),
+            Curve(p=1, period=180, amplitude=(4, 5)),    
+        ]),
     )
     
     return cfg
